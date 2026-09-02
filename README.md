@@ -1,61 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+﻿# LegalConnect Pakistan
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+A comprehensive law firm platform connecting customers with verified lawyers across Pakistan.
 
-## About Laravel
+## Live Demo
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Website:** https://lawyeruk.kesug.com/
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Demo Accounts
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Role | Email | Password | Dashboard URL |
+|------|-------|----------|---------------|
+| Admin | admin223@gmail.com | admin123 | https://lawyeruk.kesug.com/admin/dashboard |
+| Lawyer | locallawyer@gmail.com | lawyer223 | https://lawyeruk.kesug.com/lawyer/dashboard |
+| Customer | localcustomer@gmail.com | customer223 | https://lawyeruk.kesug.com/dashboard |
+| Demo Customer | customer223@gmail.com | customer14 | https://lawyeruk.kesug.com/dashboard |
 
-## Learning Laravel
+## Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Customer Panel
+- Search & filter lawyers by specialization, city, experience
+- Book appointments with time slot selection
+- Real-time chat with lawyers
+- View & manage appointments
+- Rate & review lawyers
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Lawyer Panel
+- Manage profile & specializations
+- Set availability & time slots
+- Accept/reject appointments
+- Real-time chat with customers
+- View case history
 
-## Laravel Sponsors
+### Admin Panel
+- Dashboard with statistics
+- Manage lawyers (approve/verify)
+- Manage customers
+- Manage specializations
+- View all appointments
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Tech Stack
 
-### Premium Partners
+- **Framework:** Laravel 8
+- **Frontend:** Blade Templates, Tailwind CSS, Alpine.js
+- **Database:** MySQL
+- **Authentication:** Laravel Auth
+- **Real-time:** AJAX polling for chat
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+## Database Schema
 
-## Contributing
+- users, lawyers, customers, admins
+- specializations, lawyer_specialization
+- time_slots, appointments, chats
+- meetings, payments, notifications
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Installation
 
-## Code of Conduct
+1. Clone the repository:
+   `ash
+   git clone https://github.com/talal2504a/lawyer-uk.git
+   cd lawyer-uk
+   `
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. Install dependencies:
+   `ash
+   composer install
+   npm install
+   `
 
-## Security Vulnerabilities
+3. Configure environment:
+   `ash
+   cp .env.example .env
+   php artisan key:generate
+   `
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. Set your database credentials in .env
+
+5. Run migrations:
+   `ash
+   php artisan migrate
+   `
+
+6. Start the server:
+   `ash
+   php artisan serve
+   `
+
+## Project Structure
+
+`
+app/
+├── Http/Controllers/    # Admin, Auth, Customer, Lawyer controllers
+├── Models/              # User, Lawyer, Appointment, Chat, etc.
+├── Middleware/          # Auth, NoCache, Role-based
+resources/
+├── views/
+│   ├── admin/           # Admin dashboard & management
+│   ├── lawyer/          # Lawyer dashboard & chat
+│   ├── customer/        # Customer booking & appointments
+│   ├── layouts/         # App, admin, lawyer, customer layouts
+│   ├── components/      # Navbar, hero, cards, etc.
+│   └── welcome.blade.php
+routes/
+├── web.php              # All application routes
+database/
+├── migrations/          # Database schema
+`
+
+## Routes
+
+- / - Homepage
+- /login, /register - Authentication
+- /customer/search - Find lawyers
+- /customer/lawyer/{id} - Lawyer profile & booking
+- /customer/dashboard - Customer dashboard
+- /lawyer/dashboard - Lawyer dashboard
+- /admin/dashboard - Admin dashboard
+
+## Security
+
+- Password hashing (bcrypt)
+- CSRF protection
+- Role-based middleware
+- Input validation
+- SQL injection prevention (Eloquent ORM)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced under the MIT License.
